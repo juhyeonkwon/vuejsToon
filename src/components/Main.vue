@@ -1,6 +1,6 @@
 <template>
 <b-container>
-<div id="upload" border="1 solid black">
+<div id="upload" border="2 solid black">
   <br>
   <label for="file-upload">
     <b-img fluid  id="img_preview" :src="url" v-if="isFile"></b-img>
@@ -33,13 +33,13 @@
 
 
 <b-modal id="modal" ref="modal" hide-footer hide-header hide-header-close centered size="xl" >
-  <div class="text-center">
+  <p v-if="modalif"> 변환완료! </p>
+  <b-img :src="changedImg" v-if="modalif" id="changedImg"> </b-img>
+  <div class="text-center" v-if="!modalif">
     <br/>
   <b-spinner id="spin" variant="primary" label="Spinning" v-if="!modalif"></b-spinner>
     <br/> <br/>
   </div>
-
-  <b-img :src="changedImg" v-if="modalif" id="changedImg"> </b-img>
 
 </b-modal>
 
@@ -99,15 +99,16 @@ export default {
 
 
       this.$http.post("api/home/send/", formData, { headers : { "Content-Type" : "multipart/form-data"} }).then(response => {
-        console.log(response);
 
-        console.log(response.data);
+      console.log(response);
+
+      console.log(response.data);
 
         this.changedImg = 'api/home/img/' + response.data;
         this.modalif = true;
         //this.$refs.modal.hide();
       }).catch(function(e){
-
+        console.log(e);
       });
 
       console.log('submit');
@@ -120,6 +121,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+#changedImg {
+  width : 100%
+}
 
 #img_preview {
   width : 100%;
@@ -140,8 +145,8 @@ export default {
 #upload {
   margin-left: 25%;
   width : 50%;
-  height: 50vh;
-  border: 1px solid black;
+  border: 3px solid black;
+  border-radius: 10px 10px 10px 10px;
   overflow: hidden;
 }
 
