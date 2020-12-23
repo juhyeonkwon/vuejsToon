@@ -1,5 +1,41 @@
 <template>
-<b-container>
+
+
+
+<b-container fluid>
+
+<div>
+
+<section>
+dtd
+
+</section>
+
+dtd
+
+<section>
+
+
+dtdt
+
+</section>
+
+
+<section>
+
+dtdt
+
+</section>
+
+
+
+
+</div>
+
+
+
+
+
 <div id="upload" border="2 solid black">
   <br>
   <label for="file-upload">
@@ -171,6 +207,11 @@ a {
 
 #spiner {
   margin : 0 auto;
+}
+
+
+section {
+  height : 100%;
 }
 
 </style>
